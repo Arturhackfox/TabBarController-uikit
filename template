@@ -1,0 +1,50 @@
+
+import UIKit
+
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
+    
+    // MARK: - Life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
+        setupTabBarController()
+        setupTabBarViewController()
+    }
+    
+    //MARK: - Delegate methods
+    
+     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        print("i'm selecting \(viewController)")
+        return true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print("i did select \(viewController)")
+    }
+    
+    // MARK: - Setup
+    
+    private func setupTabBarController() {
+        tabBar.tintColor = .black
+        tabBar.backgroundColor = .white
+    }
+    
+    private func setupTabBarViewController() {
+        let firstVC = FirstTabViewController()
+        let firstTabItem = UITabBarItem(title: "First", image: UIImage(systemName: "square.and.arrow.up"), selectedImage: UIImage(systemName: "square.and.arrow.up.fill"))
+        firstVC.tabBarItem = firstTabItem
+        
+        let secondVC = SecondTabViewController()
+        let secondTabItem = UITabBarItem(title: "Second", image: UIImage(systemName: "eraser"), selectedImage: UIImage(systemName: "eraser.fil"))
+        secondVC.tabBarItem = secondTabItem
+        
+        let thirdVC = ThirdTabViewController()
+        let thirdTabItem = UITabBarItem(title: "Third", image: UIImage(systemName: "pencil.tip.crop.circle"), selectedImage: UIImage(systemName: "pencil.tip.crop.circle.fil"))
+        thirdVC.tabBarItem = thirdTabItem
+        
+        let fourthVC = FourthTabViewController()
+        let fourthTabItem = UITabBarItem(title: "Fourth", image: UIImage(systemName: "paperplane"), selectedImage: UIImage(systemName: "paperplane.fil"))
+        fourthVC.tabBarItem = fourthTabItem
+
+    }
+}
